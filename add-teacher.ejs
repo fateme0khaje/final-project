@@ -1,0 +1,95 @@
+<div class="page-content-wrapper ">
+
+  <div class="container-fluid">
+
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="page-title-box">
+          <div class="row align-items-center">
+            <div class="col-md-8">
+              <h4 class="page-title m-0">استاد جدید</h4>
+            </div>
+
+            <!-- end col -->
+          </div>
+          <!-- end row -->
+        </div>
+        <!-- end page-title-box -->
+      </div>
+    </div>
+    <!-- end page title -->
+
+    <div class="row">
+      <div class="col-12">
+        <div class="card m-b-30">
+          <div class="card-body">
+
+            <h4 class="mt-0 header-title"> مدیر عزیز !</h4>
+            <p class="text-muted m-b-30 font-14">اطلاعات خواسته شده را تکمیل نموده سپس دکمه اضافه کردن را بزنید</p>
+            <form action="/dashboard/add-teacher" method="POST" enctype="multipart/form-data">
+              <div class="form-group row">
+                <label for="example-text-input" class="col-sm-2 col-form-label">نام و نام خانوادگی</label>
+                <div class="col-sm-10">
+                  <input name="fullname" type="text" maxlength="100" class="form-control" id="thresholdconfig" placeholder="نام و نام خانوادگی استاد را وارد کنید" />
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-sm-2 col-form-label">سطح</label>
+                <div class="col-sm-10">
+                  <select name="level" class="form-control">
+                    <option value="null">انتخاب</option>
+                    <option value="Starter">Starter</option>
+                    <option value="Elemantary">Elemantary</option>
+                    <option value="Intermediate">Intermediate</option>
+                    <option value="Upper intermediate">Upper-Intermediate</option>
+                    <option value="Advance">Advance</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="example-email-input" class="col-sm-2 col-form-label">ایمیل</label>
+                <div class="col-sm-10">
+                  <input name="email" class="form-control" type="email" placeholder="Example@example.com" id="example-email-input">
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="example-text-input" class="col-sm-2 col-form-label">رمز عبور</label>
+                <div class="col-sm-10">
+                  <input name="password" type="password" class="form-control" placeholder="رمز عبور" />
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="example-text-input" class="col-sm-2 col-form-label">تکرار رمز عبور</label>
+                <div class="col-sm-10">
+                  <input name="confirmPassword" type="password" class="form-control" placeholder="تکرار رمز عبور" />
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="example-tel-input" class="col-sm-2 col-form-label">تلفن</label>
+                <div class="col-sm-10">
+                  <input name="phone" class="form-control" type="tel" placeholder="تلفن ثابت و یا همراه" id="example-tel-input">
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="example-text-input" class="col-sm-2 col-form-label">عکس</label>
+                <div class="col-sm-10">
+                  <input name="image" class="form-control" type="file" placeholder="فایل انتخاب کنید">
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="example-url-input" class="col-sm-2 col-form-label">آدرس</label>
+                <div class="col-sm-10">
+                  <input name="address" class="form-control" type="text" placeholder="شهر - خیابان - کوچه" id="example-url-input">
+                </div>
+              </div>
+              <%- include('./includes/errors.ejs') %>
+              <button type="submit" class="btn mt-5 btn-primary btn-lg btn-block waves-effect waves-light">اضافه کردن</button>
+            </form>
+          </div>
+        </div>
+      </div> <!-- end col -->
+    </div> <!-- end row -->
+
+  </div><!-- container fluid -->
+
+</div> <!-- Page content Wrapper -->

@@ -1,0 +1,104 @@
+ <!-- Top Bar Start -->
+ <div class="topbar">
+
+   <div class="topbar-left	d-none d-lg-block">
+     <div class="text-center">
+       <a href="/" class="logo"><img src="/assets/images/logo2.png" height="22" alt="logo"></a>
+     </div>
+   </div>
+
+   <nav class="navbar-custom">
+
+     <!-- Search input -->
+     <div class="search-wrap" id="search-wrap">
+       <div class="search-bar">
+         <input class="search-input" type="search" placeholder="جستجو" />
+         <a href="#" class="close-search toggle-search" data-target="#search-wrap">
+           <i class="mdi mdi-close-circle"></i>
+         </a>
+       </div>
+     </div>
+
+     <ul class="list-inline float-right mb-0">
+       <li class="list-inline-item dropdown notification-list">
+         <a class="nav-link waves-effect toggle-search" href="#" data-target="#search-wrap">
+           <i class="mdi mdi-magnify noti-icon"></i>
+         </a>
+       </li>
+
+       <!-- <li class="list-inline-item dropdown notification-list">
+         <a class="nav-link dropdown-toggle arrow-none waves-effect" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+           <i class="mdi mdi-bell-outline noti-icon"></i>
+           <span class="badge badge-danger badge-pill noti-icon-badge">3</span>
+         </a>
+         <div class="dropdown-menu dropdown-menu-right dropdown-arrow dropdown-menu-lg dropdown-menu-animated"> -->
+       <!-- item-->
+       <!-- <div class="dropdown-item noti-title">
+         <h5>اعلانات (3)</h5>
+       </div>
+
+        <a href="javascript:void(0);" class="dropdown-item notify-all">
+         مشاهده همه
+       </a>
+
+ </div>
+ </li> -->
+       <% if(typeof user!=="undefined"){ %>
+       <li class="list-inline-item dropdown notification-list nav-user">
+         <a class="nav-link dropdown-toggle arrow-none waves-effect" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+           <img src="/assets/images/thumbnails/<%= user.image %> " alt="user" class="rounded-circle">
+           <span class="d-none d-md-inline-block ml-1"><%= user.fullname %> <i class="mdi mdi-chevron-down"></i> </span>
+
+         </a>
+         <div class="dropdown-menu dropdown-menu-right dropdown-menu-animated profile-dropdown">
+           <!-- <a class="dropdown-item" href="#"><i class="dripicons-user text-muted"></i> پروفایل</a> -->
+           <!-- <a class="dropdown-item" href="#"><span class="badge badge-success float-right m-t-5">5</span><i class="dripicons-gear text-muted"></i> تنظیمات</a>
+           <div class="dropdown-divider"></div> -->
+           <a class="dropdown-item" href="/dashboard/logout"><i class="dripicons-exit text-muted"></i> خروج</a>
+         </div>
+       </li>
+       <% } %>
+       <% if(typeof teacherr!=="undefined"){ %>
+       <li class="list-inline-item dropdown notification-list nav-user">
+         <a class="nav-link dropdown-toggle arrow-none waves-effect" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+           <img src="/assets/images/teachers/<%= teacherr.image %>" alt="user" class="rounded-circle">
+           <span class="d-none d-md-inline-block ml-1"><%= teacherr.fullname %> <i class="mdi mdi-chevron-down"></i> </span>
+         </a>
+         <div class="dropdown-menu dropdown-menu-right dropdown-menu-animated profile-dropdown">
+           <!-- <a class="dropdown-item" href="#"><i class="dripicons-user text-muted"></i> پروفایل</a> -->
+           <!-- <a class="dropdown-item" href="#"><span class="badge badge-success float-right m-t-5">5</span><i class="dripicons-gear text-muted"></i> تنظیمات</a>
+           <div class="dropdown-divider"></div> -->
+           <a class="dropdown-item" href="/logout"><i class="dripicons-exit text-muted"></i> خروج</a>
+           <a class="dropdown-item" href="/teacherdash/updatepassword"><i class="dripicons-exit text-muted"></i>عوض کردن گذرواژه</a>
+         </div>
+       </li>
+       <% } %>
+
+       <% if(typeof student!=="undefined"){ %>
+       <li class="list-inline-item dropdown notification-list nav-user">
+         <a class="nav-link dropdown-toggle arrow-none waves-effect" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+           <img src="/assets/images/teachers/<%= student.image %> " alt="user" class="rounded-circle">
+           <span class="d-none d-md-inline-block ml-1"><%= student.firstname %> <i class="mdi mdi-chevron-down"></i> </span>
+         </a>
+         <div class="dropdown-menu dropdown-menu-right dropdown-menu-animated profile-dropdown">
+           <!-- <a class="dropdown-item" href="#"><i class="dripicons-user text-muted"></i> پروفایل</a>
+           <a class="dropdown-item" href="#"><span class="badge badge-success float-right m-t-5">5</span><i class="dripicons-gear text-muted"></i> تنظیمات</a>
+           <div class="dropdown-divider"></div> -->
+           <a class="dropdown-item" href="/logout"><i class="dripicons-exit text-muted"></i> خروج</a>
+         </div>
+       </li>
+       <% } %>
+     </ul>
+
+     <ul class="list-inline menu-left mb-0">
+       <li class="list-inline-item">
+         <button type="button" class="button-menu-mobile open-left waves-effect">
+           <i class="mdi mdi-menu"></i>
+         </button>
+       </li>
+     </ul>
+
+   </nav>
+
+ </div>
+ <!-- Top Bar End -->

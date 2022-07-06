@@ -1,0 +1,114 @@
+<div class="page-content-wrapper ">
+
+  <div class="container-fluid">
+
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="page-title-box">
+          <div class="row align-items-center">
+            <div class="col-md-8">
+              <h4 class="page-title m-0">جدول اساتید</h4>
+            </div>
+
+            <!-- end col -->
+          </div>
+          <!-- end row -->
+        </div>
+        <!-- end page-title-box -->
+      </div>
+    </div>
+    <!-- end page title -->
+
+    <div class="row">
+      <div class="col-12">
+        <div class="card m-b-30">
+          <div class="card-body">
+
+            <h4 class="mt-0 header-title"> مدیر عزیز !</h4>
+            <p class="text-muted m-b-30 font-14">برای حذف استاد بر روی دکمه حذف در سطر آن کلیک نموده و برای ویرایش دکمه ویرایش را بزنید تا به صفحه مورد نظر هدایت شوید</p>
+
+            <div class="table-rep-plugin">
+              <div class="table-responsive b-0" data-pattern="priority-columns">
+                <table id="tech-companies-1" class="table  table-striped">
+                  <thead>
+                    <tr>
+                      <th data-priority="2" style="width: 15%;">نام و نام خانوادگی</th>
+                      <th data-priority="3">سطح</th>
+                      <th data-priority="1">ایمیل</th>
+                      <th data-priority="3">شماره تماس</th>
+                      <th data-priority="1" style="width: 30%;">آدرس محل سکونت</th>
+                      <th data-priority="6" style="width: 5%;"></th>
+                      <th data-priority="6" style="width: 5%;"></th>
+
+                    </tr>
+                  </thead>
+                  <% if( teachers.length>0){ %>
+                  <tbody>
+                    <% for(teacher of teachers){ %>
+                    <tr>
+                      <th><%=teacher.fullname%></th>
+                      <td><%= teacher.level %> </td>
+                      <td><%= teacher.email %> </td>
+                      <td><%= teacher.phone %> </td>
+                      <td><%= teacher.address %> </td>
+                      <th data-priority="6"><a href="/dashboard/edit-teacher?teacherId=<%=teacher.id %> " class="btn btn-primary" type="submit">ویرایش</a></th>
+                      <th data-priority="6"><a class="btn btn-danger" type="button" value="<%=teacher.id%>" onclick="deleteTeacher(this)">حذف</a></th>
+                    </tr>
+                    <% } %>
+
+
+
+                  </tbody>
+                  <% }  else{ %>
+                  <tbody>
+                    <tr>
+                      <p>هیچ استادی در پایگاه داده یافت نشد</p>
+                    </tr>
+                  </tbody>
+
+                  <% } %>
+                </table>
+              </div>
+
+              <%- include('./includes/pagination.ejs') %>
+            </div>
+          </div>
+        </div>
+      </div> <!-- end col -->
+    </div> <!-- end row -->
+
+  </div><!-- container fluid -->
+
+</div> <!-- Page content Wrapper -->
+
+<script>
+  $(function() {
+    $('.table-responsive').responsiveTable({
+      addDisplayAllBtn: 'btn btn-secondary'
+    });
+  });
+
+
+  function deleteTeacher(e) {
+
+
+    let id = e.getAttribute("value");
+    const xhttp = new XMLHttpRequest();
+    xhttp.onload = () => {
+      if (xhttp.status === 200) {
+        let tr = e.parentElement.parentElement;
+        let parent = e.parentElement.parentElement.parentElement;
+        parent.removeChild(tr)
+      }
+      if (xhttp.status === 403) {
+        alert(JSON.parse(xhttp.responseText).message)
+      }
+    }
+    xhttp.open("POST", '/dashboard/delete-teacher');
+    xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+
+    xhttp.send(JSON.stringify({
+      id
+    }))
+  }
+</script>

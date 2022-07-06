@@ -1,0 +1,93 @@
+<div class="page-content-wrapper ">
+
+  <div class="container-fluid">
+
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="page-title-box">
+          <div class="row align-items-center">
+            <div class="col-md-8">
+              <h4 class="page-title m-0">ایجاد آزمون جدید</h4>
+            </div>
+
+            <!-- end col -->
+          </div>
+          <!-- end row -->
+        </div>
+        <!-- end page-title-box -->
+      </div>
+    </div>
+    <!-- end page title -->
+
+    <div class="row">
+      <div class="col-12">
+        <div class="card m-b-30">
+          <div class="card-body">
+
+            <h4 class="mt-0 header-title">استاد عزیز !</h4>
+            <p class="text-muted m-b-30 font-14">اطلاعات خواسته شده را تکمیل نموده سپس دکمه اضافه کردن را بزنید</p>
+            <form action="/teacherdash/createexam" method="POST" enctype="multipart/form-data">
+              <div class="form-group row">
+                <label for="example-text-input" class="col-sm-2 col-form-label">نام آزمون</label>
+                <div class="col-sm-10">
+                  <input name="name" type="text" maxlength="75" class="form-control" id="thresholdconfig" placeholder="نام ازمون را وارد کنید" />
+                </div>
+              </div>
+
+
+              <div class="form-group row">
+                <label class="col-sm-2 col-form-label">سطح آزمون</label>
+                <div class="col-sm-10">
+                  <select name="level" class="form-control">
+                    <option value="null">انتخاب</option>
+                    <option value="easy">راحت</option>
+                    <option value="medium">متوسط</option>
+                    <option value="hard">دشوار</option>
+
+                  </select>
+                </div>
+              </div>
+              <div class="form-group row">
+                <lable class="col-sm-2 col-form-lable">کلاس</lable>
+                <div class="col-sm-10">
+                  <select name="course" class="form-control">
+                    <option value="null">انتخاب</option>
+
+                    <% if(typeof courses!=="undefined"){ %>
+                    <% for(let course of courses){ %>
+                    <option value="<%= course._id %>"><%= course.title %> </option>
+
+                    <% } %>
+                    <% } %>
+                  </select>
+
+                </div>
+              </div>
+
+
+              <%- include('./includes/errors.ejs') %>
+              <button type="submit" class="btn mt-5 btn-primary btn-lg btn-block waves-effect waves-light">اضافه کردن</button>
+            </form>
+          </div>
+        </div>
+      </div> <!-- end col -->
+    </div> <!-- end row -->
+
+  </div><!-- container fluid -->
+
+</div> <!-- Page content Wrapper -->
+<script src="/dash/assets/js/jquery.min.js"></script>
+
+<script type="text/javascript">
+  $(function() {
+    $("#start-date, #end-date").persianDatepicker({
+      formatDate: "YYYY-0M-0D"
+    });
+  });
+</script>
+<script>
+  CKEDITOR.replace('body', {
+    contentsLangDirection: 'rtl',
+  });
+  CKEDITOR.addCss(".cke_editable{cursor:text; font-size: 18px; font-family: Arial, sans-serif;}");
+</script>

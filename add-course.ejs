@@ -1,0 +1,125 @@
+<div class="page-content-wrapper ">
+
+  <div class="container-fluid">
+
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="page-title-box">
+          <div class="row align-items-center">
+            <div class="col-md-8">
+              <h4 class="page-title m-0">دوره جدید</h4>
+            </div>
+
+            <!-- end col -->
+          </div>
+          <!-- end row -->
+        </div>
+        <!-- end page-title-box -->
+      </div>
+    </div>
+    <!-- end page title -->
+
+    <div class="row">
+      <div class="col-12">
+        <div class="card m-b-30">
+          <div class="card-body">
+
+            <h4 class="mt-0 header-title">مدیر عزیز !</h4>
+            <p class="text-muted m-b-30 font-14">اطلاعات خواسته شده را تکمیل نموده سپس دکمه اضافه کردن را بزنید</p>
+            <form action="/dashboard/add-course" method="POST" enctype="multipart/form-data">
+              <div class="form-group row">
+                <label for="example-text-input" class="col-sm-2 col-form-label">نام دوره</label>
+                <div class="col-sm-10">
+                  <input name="title" type="text" maxlength="75" class="form-control" id="thresholdconfig" placeholder="نام کلاس یا دوره را وارد کنید" />
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="example-text-input" class="col-sm-2 col-form-label">محدوده زمانی</label>
+                <div class="col-sm-10 input-group input-daterange">
+                  <input name="start" type="text" id="start-date" class="form-control" placeholder="تاریخ شروع" />
+                  <input name="end" type="text" id="end-date" class="form-control" placeholder="تاریخ پایان" />
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="example-text-input" class="col-sm-2 col-form-label">مدت زمان جلسه</label>
+                <div class="col-sm-10">
+                  <input name="sessionTime" type="number" class="form-control" placeholder="مدت زمان  جلسه را بر حسب دقیقه وارد نمایید." />
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="example-text-input" class="col-sm-2 col-form-label">محل برگزاری دوره</label>
+                <div class="col-sm-10">
+                  <input name="location-" type="text" class="form-control" placeholder="محل برگزاری دوره را وارد نمایید." />
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <label class="col-sm-2 col-form-label">سطح</label>
+                <div class="col-sm-10">
+                  <select name="level" class="form-control">
+                    <option value="null">انتخاب</option>
+                    <option value="Starter">Starter</option>
+                    <option value="Elemantary">Elemantary</option>
+                    <option value="Intermediate">Intermediate</option>
+                    <option value="Upper intermediate">Upper-Itermediate</option>
+                    <option value="Advance">Advance</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-sm-2 col-form-label">استاد دوره</label>
+                <div class="col-sm-10">
+                  <select name="teacher" class="form-control">
+                    <option value="null">انتخاب</option>
+                    <% if(teachers!=="undefined"){ %>
+                    <% for(let teacher of teachers){ %>
+                    <option value="<%= teacher.id%>"><%= teacher.fullname%></option>
+                    <% } %>
+                    <% } %>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="example-text-input" class="col-sm-2 col-form-label">هزینه</label>
+                <div class="col-sm-10">
+                  <input name="price" type="text" class="form-control" placeholder="هزینه کلاس را وارد کنید" />
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="example-text-input" class="col-sm-2 col-form-label">عکس</label>
+                <div class="col-sm-10">
+                  <input name="image" class="form-control" type="file" placeholder="فایل انتخاب کنید">
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="example-text-input" class="col-sm-2 col-form-label">توضیحات</label>
+                <div class="col-sm-10">
+                  <textarea class="cke_rtl" name="body"></textarea>
+                </div>
+              </div>
+              <%- include('./includes/errors.ejs') %>
+              <button type="submit" class="btn mt-5 btn-primary btn-lg btn-block waves-effect waves-light">اضافه کردن</button>
+            </form>
+          </div>
+        </div>
+      </div> <!-- end col -->
+    </div> <!-- end row -->
+
+  </div><!-- container fluid -->
+
+</div> <!-- Page content Wrapper -->
+<script src="/dash/assets/js/jquery.min.js"></script>
+
+<script type="text/javascript">
+  $(function() {
+    $("#start-date, #end-date").persianDatepicker({
+      formatDate: "YYYY-0M-0D"
+    });
+  });
+</script>
+<script>
+  CKEDITOR.replace('body', {
+    contentsLangDirection: 'rtl',
+  });
+  CKEDITOR.addCss(".cke_editable{cursor:text; font-size: 18px; font-family: Arial, sans-serif;}");
+</script>

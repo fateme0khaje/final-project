@@ -1,0 +1,103 @@
+<div class="page-content-wrapper ">
+
+  <div class="container-fluid">
+
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="page-title-box">
+          <div class="row align-items-center">
+            <div class="col-md-8">
+              <h4 class="page-title m-0">جدول سوالات </h4>
+            </div>
+
+            <!-- end col -->
+          </div>
+          <!-- end row -->
+        </div>
+        <!-- end page-title-box -->
+      </div>
+    </div>
+    <!-- end page title -->
+
+    <div class="row">
+      <div class="col-12">
+        <div class="card m-b-30">
+          <div class="card-body">
+
+            <h4 class="mt-0 header-title"> زبان آموز عزیز !</h4>
+            <p class="text-muted m-b-30 font-14">پاسخ خود را بنویسید سپس گزینه ارسال رو به روی سوال مورد نظر را بزنید </p>
+
+            <div class="table-rep-plugin">
+              <div class="table-responsive b-0" data-pattern="priority-columns">
+                <table id="tech-companies-1" class="table  table-striped">
+                  <thead>
+                    <tr>
+                      <th data-priority="2" style="width: 90%;">سوال</th>
+                      <th data-priority="6" style="width: 10%;">عملیات</th>
+
+                    </tr>
+                  </thead>
+                  <% if( questions.length>0){ %>
+                  <tbody>
+                    <% for(question of questions){ %>
+                    <tr>
+                      <td><%-question.body%></td>
+                      <td>
+
+                        <button class="btn btn-primary" value="<%= question.id %>" onclick="sendAnswer(this.value)">ارسال پاسخ</button>
+                      </td>
+                    </tr>
+                    <% } %>
+
+
+
+                  </tbody>
+
+                  <% } %>
+                </table>
+                <p></p>
+                <form action="/dashboard/add-course" method="POST" enctype="multipart/form-data">
+
+
+                  <div class="form-group">
+                    <label for="answer">جواب</label>
+                    <textarea class="form-control" id="answer" rows="3" name="body"></textarea>
+                  </div>
+                  <%- include('./includes/errors.ejs') %>
+                </form>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+      </div> <!-- end col -->
+    </div> <!-- end row -->
+
+  </div><!-- container fluid -->
+
+</div> <!-- Page content Wrapper -->
+
+<script>
+  $(function() {
+    $('.table-responsive').responsiveTable({
+      addDisplayAllBtn: 'btn btn-secondary'
+    });
+  });
+
+  function sendAnswer(e) {
+    const xhttp = new XMLHttpRequest();
+    xhttp.onload = () => {
+      console.log(xhttp.response);
+      document.querySelector('#answer').value = "";
+    }
+    let answer = {
+      "body": document.querySelector("#answer").value,
+      "question": e
+    }
+
+    xhttp.open('POST', "/studash/answerQuestion");
+    xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+    xhttp.send(JSON.stringify(answer));
+  }
+</script>

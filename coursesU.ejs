@@ -1,0 +1,49 @@
+ <!-- Start Page Title Area -->
+ <div class="banner-area classes">
+   <div class="d-table">
+     <div class="d-table-cell">
+       <div class="container">
+         <div class="page-title-content">
+           <h2>دوره های آموزشی </h2>
+           <ul>
+             <li>
+               <a href="/"> صفحه اصلی </a>
+               <i class="flaticon-left-arrow"></i>
+               <p class="active">دوره ها</p>
+             </li>
+           </ul>
+         </div>
+       </div>
+     </div>
+   </div>
+ </div>
+ <!-- End Page Title Area -->
+
+ <!-- Classes -->
+ <section class="class-area">
+   <div class="container">
+     <div class="row">
+       <% if(courses.length>0){ %>
+       <% for(let course of courses){ %>
+       <div class="col-lg-4 col-md-6">
+         <div class="single-ragular-course">
+           <div class="course-img">
+             <img src="/assets/images/courses/course.png" alt="ragular" />
+             <h2><%= course.title %></h2>
+           </div>
+           <div class="course-content">
+             <p>
+               <%- truncateTo200(course.body)%> ...
+             </p>
+             <a href="/course?courseId=<%= course.id %> " class="border-btn">ادامه مطلب</a>
+           </div>
+         </div>
+       </div>
+       <% } %>
+       <% } %>
+
+     </div>
+     <%- include('./includes/pagination.ejs')%>
+   </div>
+ </section>
+ <!-- End Classes -->

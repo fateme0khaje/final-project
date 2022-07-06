@@ -1,0 +1,7 @@
+<% if(typeof err!=='undefined' &&err.length>0){ %>
+<% for(let e of err){ %>
+<div class="alert alert-danger mb-0" role="alert">
+  <strong>خطای ناگهانی!</strong> <%= e%>
+</div>
+<% } %>
+<% } %>

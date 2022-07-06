@@ -1,0 +1,55 @@
+ <!-- Start Page Title Area -->
+ <div class="banner-area blogs-bg">
+   <div class="d-table">
+     <div class="d-table-cell">
+       <div class="container">
+         <div class="page-title-content">
+           <h2>اطلاعیه ها و مطالب آموزشی</h2>
+           <ul>
+             <li>
+               <a href="/"> صفحه اصلی </a>
+               <i class="flaticon-left-arrow"></i>
+               <p class="active">پست ها</p>
+             </li>
+           </ul>
+         </div>
+       </div>
+     </div>
+   </div>
+ </div>
+ <!-- End Page Title Area -->
+
+ <!-- Blogs -->
+ <section class="events">
+   <div class="container">
+     <div class="row">
+       <% if(blogs.length>0){ %>
+       <% for(let blog of blogs){ %>
+       <div class="col-lg-4 col-md-6">
+         <div class="single-events">
+           <div class="events-img">
+             <a href="/blog?blogId=<%= blog.id %>">
+               <img src="/assets/images/blogs/<%= blog.image%>" alt="events" style="height: 749 !important; width: 500 !important;" />
+             </a>
+           </div>
+           <div class="content">
+             <a href="/blog?blogId=<%= blog.id %>">
+               <h2><%= blog.title %> </h2>
+               <p class="calender">
+                 <%= miladiToShamsi(blog.date)%> <i class="flaticon-calendar"></i>
+               </p>
+               <p>
+                 <%- truncateTo200(blog.body) %> ...
+               </p>
+               <a href="/blog?blogId=<%= blog.id %>" class="line-bnt">ادامه مطلب <i class="flaticon-left-arrow"></i></a>
+           </div>
+         </div>
+       </div>
+       <% } %>
+       <% } %>
+     </div>
+   </div>
+
+   <%- include("./includes/pagination.ejs") %>
+ </section>
+ <!-- End Events  -->

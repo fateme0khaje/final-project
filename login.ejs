@@ -1,0 +1,76 @@
+ <!-- Start Page Title Area -->
+ <div class="banner-area signup">
+   <div class="d-table">
+     <div class="d-table-cell">
+       <div class="container">
+         <div class="page-title-content">
+           <h2>ورود</h2>
+           <ul>
+             <li>
+               <a href="/"> صفحه اصلی </a>
+               <i class="flaticon-left-arrow"></i>
+               <p class="active"> ورود </p>
+             </li>
+           </ul>
+         </div>
+       </div>
+     </div>
+   </div>
+ </div>
+ <!-- End Page Title Area -->
+
+
+ <!-- SignUp -->
+ <section class="signup-area">
+   <div class="container">
+     <div class="row align-items-center">
+       <div class="col-lg-6">
+         <div class="signup-form">
+           <h2>خوش آمدید!</h2>
+           <%- include('./includes/messages.ejs') %>
+           <form method="POST" action="/login">
+             <div class="row">
+               <div class="col-lg-12">
+                 <div class="form-group">
+                   <input type="text" class="form-control" placeholder="نام کاربری" name="username">
+                 </div>
+               </div>
+
+               <div class="col-lg-12">
+                 <div class="form-group">
+                   <input type="password" class="form-control" placeholder="رمز عبور" name="password">
+                 </div>
+               </div>
+               <div class="col-lg-12">
+                 <div class="form-check">
+                   <input type="checkbox" class="form-check-input" id="checkme" name="rememberme">
+                   <label class="form-check-label" for="checkme">من را به خاطر بسپار</label>
+                 </div>
+               </div>
+               <div class="col-lg-12">
+
+                 <div class="g-recaptcha" data-sitekey="6LfXS0QfAAAAAKQw_hU3BDSx0TkFs6rUPN90s07A"></div>
+               </div>
+               <%- include('./includes/errors.ejs') %>
+
+               <div class="col-lg-12">
+                 <button type="submit" class="box-btn">
+                   ورود
+                 </button>
+               </div>
+               <span class="already"> کاربر جدید ! <a href="/register">ثبت نام</a></span>
+             </div>
+
+           </form>
+         </div>
+
+       </div>
+       <div class="col-lg-6">
+         <div class="sign-up-img">
+           <img src="assets/images/login.jpg" alt="singup">
+         </div>
+       </div>
+     </div>
+   </div>
+ </section>
+ <!-- End SignUp -->

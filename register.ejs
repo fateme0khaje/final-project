@@ -1,0 +1,89 @@
+ <!-- Start Page Title Area -->
+ <div class="banner-area signup">
+   <div class="d-table">
+     <div class="d-table-cell">
+       <div class="container">
+         <div class="page-title-content">
+           <h2>ثبت نام</h2>
+           <ul>
+             <li>
+               <a href="/"> صفحه اصلی </a>
+               <i class="flaticon-left-arrow"></i>
+               <p class="active"> ثبت نام </p>
+             </li>
+           </ul>
+         </div>
+       </div>
+     </div>
+   </div>
+ </div>
+ <!-- End Page Title Area -->
+
+
+ <!-- SignUp -->
+
+
+ <section class="signup-area">
+   <div class="container">
+     <div class="row align-items-center">
+       <div class="col-lg-6">
+         <div class="sign-up-img">
+           <img src="/assets/images/register.jpg" alt="singup">
+         </div>
+       </div>
+
+       <div class="col-lg-6">
+         <div class="signup-form">
+           <h2>ایجاد حساب کاربری</h2>
+           <form method="POST" action="/register">
+             <div class="row">
+               <div class="col-lg-12">
+                 <div class="form-group">
+                   <input type="text" class="form-control" placeholder="نام" name="firstname">
+                 </div>
+               </div>
+               <div class="col-lg-12">
+                 <div class="form-group">
+                   <input type="text" class="form-control" placeholder="نام خانوادگی" name="lastname">
+                 </div>
+               </div>
+               <div class="col-lg-12">
+                 <div class="form-group">
+                   <input type="text" class="form-control" placeholder="شماره تماس(اختیاری)" name="phone">
+                 </div>
+               </div>
+
+               <div class="col-lg-12">
+                 <div class="form-group">
+                   <input type="email" class="form-control" placeholder="ایمیل" name="email">
+                 </div>
+               </div>
+
+               <div class="col-lg-12">
+                 <div class="form-group">
+                   <input type="password" class="form-control" placeholder="رمز عبور" name="password">
+                 </div>
+               </div>
+               <div class="col-lg-12">
+                 <div class="form-group">
+                   <input type="password" class="form-control" placeholder="تایید رمز عبور" name="confirmPassword">
+                 </div>
+               </div>
+
+
+               <div class="col-lg-12">
+                 <button type="submit" class="box-btn">
+                   ثبت نام
+                 </button>
+               </div>
+               <span class="already">حساب کاربری دارید؟ <a href="/login">ورود!</a></span>
+             </div>
+             <%- include('./includes/errors.ejs')%>
+
+           </form>
+         </div>
+       </div>
+     </div>
+   </div>
+ </section>
+ <!-- End SignUp -->

@@ -1,0 +1,110 @@
+<div class="page-content-wrapper ">
+
+  <div class="container-fluid">
+
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="page-title-box">
+          <div class="row align-items-center">
+            <div class="col-md-8">
+              <h4 class="page-title m-0">جدول آزمون ها</h4>
+            </div>
+
+            <!-- end col -->
+          </div>
+          <!-- end row -->
+        </div>
+        <!-- end page-title-box -->
+      </div>
+    </div>
+    <!-- end page title -->
+
+    <div class="row">
+      <div class="col-12">
+        <div class="card m-b-30">
+          <div class="card-body">
+
+            <h4 class="mt-0 header-title"> زبان آموز عزیز !</h4>
+            <p class="text-muted m-b-30 font-14">برای مشاهده آزمون بر روی دکمه نمایش سوالات در سطر آن کلیک نموده تا به صفحه مورد نظر هدایت شوید</p>
+
+            <div class="table-rep-plugin">
+              <div class="table-responsive b-0" data-pattern="priority-columns">
+                <table id="tech-companies-1" class="table  table-striped">
+                  <thead>
+                    <tr>
+                      <th data-priority="2" style="width: 20%;">نام</th>
+                      <th data-priority="3">سطح آزمون</th>
+                      <th data-priority="1" style="width: 30%;">استاد مربوطه</th>
+                      <th data-priority="6" style="width: 5%;"></th>
+
+                    </tr>
+                  </thead>
+                  <% if( exams.length>0){ %>
+                  <tbody>
+                    <% for(exam of exams){ %>
+                    <tr>
+                      <th><%=exam.name%></th>
+                      <td><%= exam.level %> </td>
+                      <td><% if(exam.teacher){ %>
+                        <%= exam.teacher.fullname %>
+                        <% }else{ %>
+                        استاد ازمون را انتخاب نکرده اید
+                        <% } %>
+                      </td>
+                      <th data-priority="6"><a href="/studash/exam?examId=<%=exam.id %>" class="btn btn-primary" type="submit">نمایش سوالات</a></th>
+                      <th data-priority="6"><a href="/studash/exammarks?examId=<%=exam.id %>" class="btn btn-primary" type="submit">نمایش نمرات</a></th>
+                    </tr>
+                    <% } %>
+
+
+
+                  </tbody>
+                  <% }  else{ %>
+                  <tbody>
+                    <tr>
+                      <p>هیچ آزمونی در پایگاه داده یافت نشد</p>
+                    </tr>
+                  </tbody>
+
+                  <% } %>
+                </table>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+      </div> <!-- end col -->
+    </div> <!-- end row -->
+
+  </div><!-- container fluid -->
+
+</div> <!-- Page content Wrapper -->
+
+<script>
+  $(function() {
+    $('.table-responsive').responsiveTable({
+      addDisplayAllBtn: 'btn btn-secondary'
+    });
+  });
+
+  function deleteCourse(e) {
+
+
+    let id = e.getAttribute("value")
+    const xhttp = new XMLHttpRequest();
+    xhttp.onload = () => {
+      if (xhttp.status === 200) {
+        let tr = e.parentElement.parentElement;
+        let parent = e.parentElement.parentElement.parentElement;
+        parent.removeChild(tr)
+      }
+    }
+    xhttp.open("POST", '/dashboard/delete-course');
+    xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+
+    xhttp.send(JSON.stringify({
+      id
+    }))
+  }
+</script>

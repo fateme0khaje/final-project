@@ -1,0 +1,197 @@
+ <!-- Slider area -->
+ <section class="slider-area">
+   <div class="home-slider owl-carousel owl-theme">
+     <div class="single-slider single-slider-bg-1">
+       <div class="d-table">
+         <div class="d-table-cell">
+           <div class="container">
+             <div class="row align-items-center">
+               <div class="col-lg-12 text-center">
+                 <div class="slider-tittle one">
+                   <h1>
+                     موسسه آموزشی partou
+                    </h1>
+                   <p>
+                     آموزش زبان انگلیسی با اساتید مجرب و در تمام سطوح
+                   </p>
+                 </div>
+                 <div class="slider-btn bnt1 text-center">
+                   <a href="/login" class="box-btn">ورود</a>
+                   <a href="/courses" class="border-btn">مشاهده دوره ها</a>
+                 </div>
+               </div>
+             </div>
+           </div>
+         </div>
+       </div>
+     </div>
+     <div class="single-slider single-slider-bg-2">
+       <div class="d-table">
+         <div class="d-table-cell">
+           <div class="container">
+             <div class="row align-items-center">
+               <div class="col-lg-12 text-center">
+                 <div class="slider-tittle two">
+                   <h1>
+                    موسسه آموزشی partou
+                  </h1>
+                   <p>
+                    آموزش زبان انگلیسی با اساتید مجرب و در تمام سطوح
+                  </p>
+                 </div>
+                 <div class="slider-btn bnt2">
+                   <a href="/login" class="box-btn">ورود</a>
+                   <a href="/courses" class="border-btn">مشاهده دوره ها</a>
+                 </div>
+               </div>
+             </div>
+           </div>
+         </div>
+       </div>
+     </div>
+   </div>
+ </section>
+ <!-- End Slider aera -->
+
+ <!-- Service area -->
+ <section class="service-area">
+   <div class="container">
+     <div class="row">
+       <div class="col-lg-4 col-sm-6">
+         <div class="single-service text-center">
+           <div class="service-icon">
+             <i class="flaticon-clock"></i>
+           </div>
+           <div class="service-content">
+             <h2>ساعت کاری</h2>
+             <p>یکشنبه - پنجشنبه : 10:00صبح - 06:00عصر</p>
+           </div>
+         </div>
+       </div>
+       <div class="col-lg-4 col-sm-6">
+         <div class="single-service text-center">
+           <div class="service-icon">
+             <i class="flaticon-pin"></i>
+           </div>
+           <div class="service-content">
+             <h2>آدرس</h2>
+             <p>کاشان ، بلوار دانش  ، میدان آزادی ، خیابان شبنم 9</p>
+           </div>
+         </div>
+       </div>
+       <div class="col-lg-4 col-sm-12">
+         <div class="single-service text-center sst-10">
+           <div class="service-icon">
+             <i class="flaticon-telephone"></i>
+           </div>
+           <div class="service-content">
+             <h2>تلفن</h2>
+             <p>031-55206065</p>
+           </div>
+         </div>
+       </div>
+     </div>
+   </div>
+ </section>
+
+ <!-- End Service area -->
+
+ <div class="shape-ellips">
+   <img src="assets/images/shape.png" alt="shape" />
+ </div>
+
+ <!-- Regular Course area  -->
+
+ <section class="home-ragular-course pb-100">
+   <div class="container">
+     <div class="section-tittle text-center">
+       <h2>دوره های آموزشی </h2>
+       <p>
+         مجموعه ما با دارا بودن مجرب ترین اساتید در همه سطوح دوره برگزار می کند
+       </p>
+     </div>
+
+     <div class="row">
+       <% if(courses.length>0){ %>
+       <% for(let course of courses){  %>
+       <div class="col-lg-4 col-md-6">
+         <div class="single-ragular-course">
+           <div class="course-img">
+             <img src="/assets/images/courses/course.png" alt="ragular" />
+             <h2><%= course.title %> </h2>
+           </div>
+           <div class="course-content">
+             <p>
+               <%- truncateTo200(course.body)%>...
+             </p>
+             <a href="/course?courseId=<%= course.id%>" class="border-btn">ادامه مطلب</a>
+           </div>
+         </div>
+       </div>
+
+       <% } %>
+       <% } %>
+
+
+
+     </div>
+   </div>
+ </section>
+
+ <!-- End Regular Course area  -->
+
+
+
+<!-- <span class="left-shape">
+   <img src="assets/images/left-shape.png" alt="shape" />
+ </span> -->
+
+
+
+ <!-- Teachers Area -->
+ <section class="home-teachers-area">
+   <div class="container">
+     <div class="section-tittle text-center">
+       <h2>اساتید محترم</h2>
+       <p>
+         موسسه آموزشی پرتو بهترین اساتید را برای تمام سطوح دارد
+       </p>
+     </div>
+
+     <div class="row">
+       <% if(teachers.length>0){ %>
+       <% for(let teacher of teachers){ %>
+       <div class="col-lg-3 col-sm-6">
+         <div class="single-home-teacher">
+           <div class="teacher-img">
+             <a href="/teachers">
+               <img src="/assets/images/teachers/<%= teacher.image%>" alt="teacher" /></a>
+           </div>
+           <div class="teachers-content">
+             <h2><%= teacher.fullname %></h2>
+             <p><%= teacher.level %> </p>
+           </div>
+           <div class="teacher-social">
+             <ul>
+               <li>
+                 <a href="#"><i class="flaticon-facebook"></i></a>
+               </li>
+               <li>
+                 <a href="#"><i class="flaticon-twitter"></i></a>
+               </li>
+               <li>
+                 <a href="#"><i class="flaticon-envelope"></i></a>
+               </li>
+               <li>
+                 <a href="#"><i class="fa fa-long-arrow-alt-left"></i></a>
+               </li>
+             </ul>
+           </div>
+         </div>
+       </div>
+       <% } %>
+       <% } %>
+     </div>
+   </div>
+ </section>
+ <!-- End Teachers Area -->

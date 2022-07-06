@@ -1,0 +1,112 @@
+<div class="page-content-wrapper ">
+
+  <div class="container-fluid">
+
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="page-title-box">
+          <div class="row align-items-center">
+            <div class="col-md-8">
+              <h4 class="page-title m-0">دوره های ثبت نام شده</h4>
+            </div>
+
+            <!-- end col -->
+          </div>
+          <!-- end row -->
+        </div>
+        <!-- end page-title-box -->
+      </div>
+    </div>
+    <!-- end page title -->
+
+    <div class="row">
+      <div class="col-12">
+        <div class="card m-b-30">
+          <div class="card-body">
+
+
+            <div class="table-rep-plugin">
+              <div class="table-responsive b-0" data-pattern="priority-columns">
+                <table id="tech-companies-1" class="table  table-striped">
+                  <thead>
+                    <tr>
+                      <th data-priority="2" style="width: 20%;">کلاس</th>
+                      <th data-priority="3">سطح کلاس</th>
+                      <th data-priority="1">هزینه</th>
+                      <th data-priority="3">مدت زمان جلسه</th>
+                      <th data-priority="3">فایل ها</th>
+
+                    </tr>
+                  </thead>
+                  <% if( courses.length>0){ %>
+                  <tbody>
+                    <% for(course of courses){ %>
+                    <tr>
+                      <th><%=course.title%></th>
+                      <td><%= course.level %> </td>
+                      <td><%= course.price%> </td>
+                      <td><%= course.sessionTime %> دقیقه</td>
+                      <td>
+                        <div>
+                          <% for(let file of course.file){ %>
+                          <a href="/file?fileName=<%= file%>"><%= file %></a><br>
+                          <% } %>
+                        </div>
+                      </td>
+
+                    </tr>
+                    <% } %>
+
+
+
+                  </tbody>
+                  <% }  else{ %>
+                  <tbody>
+                    <tr>
+                      <p>هیچ دوره ای در پایگاه داده یافت نشد</p>
+                    </tr>
+                  </tbody>
+
+                  <% } %>
+                </table>
+              </div>
+              <%- include('./includes/pagination.ejs') %>
+
+            </div>
+
+          </div>
+        </div>
+      </div> <!-- end col -->
+    </div> <!-- end row -->
+
+  </div><!-- container fluid -->
+
+</div> <!-- Page content Wrapper -->
+
+<script>
+  $(function() {
+    $('.table-responsive').responsiveTable({
+      addDisplayAllBtn: 'btn btn-secondary'
+    });
+  });
+
+  function deleteCourse(e) {
+
+
+    let id = e.getAttribute("value")
+    const xhttp = new XMLHttpRequest();
+    xhttp.onload = () => {
+      if (xhttp.status === 200) {
+        let tr = e.parentElement.parentElement;
+        let parent = e.parentElement.parentElement.parentElement;
+        parent.removeChild(tr)
+      }
+    }
+    xhttp.open("POST", '/dashboard/delete-course');
+    xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+
+    xhttp.send(JSON.stringify({
+      id
+    }))
+  }
+</script>

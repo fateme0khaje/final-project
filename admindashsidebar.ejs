@@ -1,0 +1,153 @@
+ <!-- ========== Left Sidebar Start ========== -->
+ <div class="left side-menu">
+   <button type="button" class="button-menu-mobile button-menu-mobile-topbar open-left waves-effect">
+     <i class="mdi mdi-close"></i>
+   </button>
+
+   <div class="left-side-logo d-block d-lg-none">
+     <div class="text-center">
+       <% if(typeof user!=="undefined"){ %>
+       <% if(user.role==="admin") {%>
+       <a href="/dashboard" class="logo"><img src="/assets/images/logo1.png" height="20" alt="logo"></a>
+     </div>
+   </div>
+
+   <div class="sidebar-inner slimscrollleft">
+
+     <div id="sidebar-menu">
+       <ul>
+         <li class="menu-title">اصلی</li>
+
+         <li>
+           <a href="/dashboard" class="waves-effect">
+             <i class="dripicons-home"></i>
+             <span> داشبورد </span>
+           </a>
+         </li>
+
+         <!-- <li>
+           <a href="/dashboard/edit-statistic" class="waves-effect"><i class="mdi mdi-circle-edit-outline"></i> <span> ویرایش آمار سایت</span> </a>
+
+         </li> -->
+
+         <li class="has_sub">
+           <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-school"></i> <span> اساتید </span> <span class="menu-arrow float-right"><i class="mdi mdi-chevron-right"></i></span></a>
+           <ul class="list-unstyled">
+             <li><a href="/dashboard/add-teacher">استاد جدید</a></li>
+             <li><a href="/dashboard/teachers">ویرایش و حذف اساتید</a></li>
+           </ul>
+         </li>
+         <!-- <li>
+           <a href="/dashboard/gallery" class="waves-effect"><i class="mdi mdi-postage-stamp"></i><span>گالری</span></a>
+         </li> -->
+         <li class="has_sub">
+           <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-book-outline"></i> <span> دوره های آموزشی </span> <span class="menu-arrow float-right"><i class="mdi mdi-chevron-right"></i></span></a>
+           <ul class="list-unstyled">
+             <li><a href="/dashboard/add-course">ایجاد دوره آموزشی جدید</a></li>
+             <li><a href="/dashboard/courses">ویرایش دوره ها</a></li>
+
+           </ul>
+         </li>
+         <li class="has_sub">
+           <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-book-outline"></i> <span>پست ها </span><span class="menu-arrow float-right"><i class="mdi mdi-chevron-right"></i></span></a>
+           <ul class="list-unstyled">
+             <li><a href="/dashboard/add-blog">ایجاد پست</a></li>
+             <li><a href="/dashboard/blogs">ویرایش پست ها</a></li>
+
+           </ul>
+         </li>
+         <% } %>
+         <% } %>
+         <% if(typeof teacherr !=="undefined" ){ %>
+         <% if(teacherr.role==="teacher"){%>
+         <a href="/teacherdash" class="logo"><img src="/assets/images/logo1.png" height="20" alt="logo"></a>
+     </div>
+   </div>
+
+   <div class="sidebar-inner slimscrollleft">
+
+     <div id="sidebar-menu">
+       <ul>
+         <li class="menu-title">اصلی</li>
+
+         <li>
+           <a href="/teacherdash" class="waves-effect">
+             <i class="dripicons-home"></i>
+             <span> داشبورد </span>
+           </a>
+         </li>
+         <li class="has_sub">
+           <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-book-outline"></i> <span>دوره های آموزشی </span> <span class="menu-arrow float-right"><i class="mdi mdi-chevron-right"></i></span></a>
+           <ul class="list-unstyled">
+             <li><a href="/teacherdash/courses">دوره ها</a></li>
+             <li><a href="/teacherdash/coursefile">اضافه کردن فایل</a></li>
+           </ul>
+         </li>
+         <li class="has_sub">
+           <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-book-outline"></i> <span>آزمون ها</span> <span class="menu-arrow float-right"><i class="mdi mdi-chevron-right"></i></span></a>
+           <ul class="list-unstyled">
+             <li><a href="/teacherdash/createexam">ایجاد آزمون جدید</a></li>
+             <li><a href="/teacherdash/addquestion">اضافه کردن سوال به آزمون ها</a></li>
+             <li><a href="/teacherdash/teacherexams">مشاهده آزمون ها و پاسخ ها</a></li>
+           </ul>
+         </li>
+         <% } %>
+         <% } %>
+         <% if(typeof student!=="undefined") {%>
+         <% if(student.role==="student"){ %>
+         <a href="/studash" class="logo"><img src="/assets/images/logo1.png" height="20" alt="logo"></a>
+     </div>
+   </div>
+
+   <div class="sidebar-inner slimscrollleft">
+
+     <div id="sidebar-menu">
+       <ul>
+         <li class="menu-title">اصلی</li>
+
+         <li>
+           <a href="/studash" class="waves-effect">
+             <i class="dripicons-home"></i>
+             <span>داشبورد زبان آموز</span>
+           </a>
+         </li>
+         <li class="has_sub">
+           <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-book-outline"></i> <span>دوره ها </span> <span class="menu-arrow float-right"><i class="mdi mdi-chevron-right"></i></span></a>
+           <ul class="list-unstyled">
+             <li><a href="/studash/courses">دوره های ثبت نام شده</a></li>
+           </ul>
+         </li>
+         <li class="has_sub">
+           <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-book-outline"></i> <span>آزمون ها</span> <span class="menu-arrow float-right"><i class="mdi mdi-chevron-right"></i></span></a>
+           <ul class="list-unstyled">
+             <li><a href="/studash/exams">آزمون های شرکت کرده</a></li>
+           </ul>
+         </li>
+         <% } %>
+         <% } %>
+
+         <!-- <li class="has_sub">
+           <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-layers-outline"></i><span>رویداد ها</span><span class="menu-arrow float-right"><i class="mdi mdi-chevron-right"></i></span></a>
+           <ul class="list-unstyled">
+             <li><a href="/dashboard/add-event">اضافه کردن رویداد جدید</a></li>
+             <li><a href="/dashboard/events">ویرایش و حذف رویداد ها</a></li>
+
+           </ul>
+         </li>
+         <li class="has_sub">
+           <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-blogger"></i><span>بلاگ ها</span><span class="menu-arrow float-right"><i class="mdi mdi-chevron-right"></i></span></a>
+           <ul class="list-unstyled">
+             <li><a href="/dashboard/add-blog">اضافه کردن بلاگ جدید</a></li>
+             <li><a href="/dashboard/blogs">ویرایش و حذف بلاگ ها</a></li>
+
+           </ul>
+         </li> -->
+
+
+
+       </ul>
+     </div>
+     <div class="clearfix"></div>
+   </div> <!-- end sidebarinner -->
+ </div>
+ <!-- Left Sidebar End -->

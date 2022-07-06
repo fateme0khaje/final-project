@@ -1,0 +1,84 @@
+  <!-- Start Page Title Area -->
+  <div class="banner-area class-details">
+    <div class="d-table">
+      <div class="d-table-cell">
+        <div class="container">
+          <div class="page-title-content">
+            <h2>جزئیات دوره ها</h2>
+            <ul>
+              <li>
+                <a href="/"> صفحه اصلی </a>
+                <i class="flaticon-left-arrow"></i>
+                <a href="/courses"> دوره های آموزشی </a>
+                <i class="flaticon-left-arrow"></i>
+                <p class="active"> جزئیات دوره ها</p>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- End Page Title Area -->
+
+  <!-- Class Details -->
+  <section class="single-class-area">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-7">
+          <div class="single-class">
+            <div class="class-img">
+              <img src="/assets/images/courses/course.png" alt="about" />
+            </div>
+
+            <div class="class-contnet">
+              <h2><%= course.title%></h2>
+              <p>
+                <%- course.body %>
+              </p>
+
+              <p>مدت زمان هر جلسه : <%= course.sessionTime%> دقیقه </p>
+              <p>استاد : <% if(course.teacher!==null){ %><%= course.teacher.fullname %><% }else{ %>مشخص نشده <% } %> </p>
+            </div>
+            <div class="class-btn">
+              <a href="/enroll?courseId=<%= course.id %>" class="box-btn">ثبت نام اولیه </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-5">
+          <div class="class-content-right">
+            <form>
+              <div class="input-group">
+                <input type="text" class="form-control about-search" placeholder="جستجو ..." />
+              </div>
+              <button type="submit"> <i class="flaticon-search"></i></button>
+            </form>
+
+
+            <div class="consultation-area">
+              <h2> انتقادات و پیشنهادات </h2>
+              <form class="form-group">
+                <div class="row">
+                  <div class="col-md-12">
+                    <input type="text" class="form-control" placeholder="نام و نام خانوادگی" />
+                  </div>
+                  <div class="col-md-12">
+                    <input type="email" class="form-control" placeholder="آدرس ایمیل" />
+                  </div>
+                  <div class="col-md-12">
+                    <input type="text" class="form-control" placeholder="تلفن" />
+                  </div>
+                  <div class="col-md-12">
+                    <textarea placeholder="پیام شما ..." class="form-control"></textarea>
+                  </div>
+                </div>
+              </form>
+              <a href="#" class="box-btn">ارسال</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End About Area -->

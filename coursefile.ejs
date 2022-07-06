@@ -1,0 +1,60 @@
+<div class="page-content-wrapper ">
+
+  <div class="container-fluid">
+
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="page-title-box">
+          <div class="row align-items-center">
+            <div class="col-md-8">
+              <h4 class="page-title m-0">اضافه کردن فایل به دوره ها</h4>
+            </div>
+
+            <!-- end col -->
+          </div>
+          <!-- end row -->
+        </div>
+        <!-- end page-title-box -->
+      </div>
+    </div>
+    <!-- end page title -->
+
+    <div class="row">
+      <div class="col-12">
+        <div class="card m-b-30">
+          <div class="card-body">
+
+            <h4 class="mt-0 header-title"> استاد عزیز !</h4>
+            <p class="text-muted m-b-30 font-14">اطلاعات خواسته شده را تکمیل نموده سپس دکمه اضافه کردن را بزنید</p>
+            <form action="/teacherdash/coursefile" method="POST" enctype="multipart/form-data">
+
+              <div class="form-group row">
+                <label class="col-sm-2 col-form-label">دوره</label>
+                <div class="col-sm-10">
+                  <select name="course" class="form-control">
+                    <option value="null">انتخاب</option>
+                    <% for(let course of courses){ %>
+                    <option value="<%= course.id %>"><%= course.title %></option>
+                    <% } %>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <label for="example-text-input" class="col-sm-2 col-form-label">فایل</label>
+                <div class="col-sm-10">
+                  <input name="file" class="form-control" type="file" placeholder="فایل انتخاب کنید">
+                </div>
+              </div>
+
+              <%- include('./includes/errors.ejs') %>
+              <button type="submit" class="btn mt-5 btn-primary btn-lg btn-block waves-effect waves-light">اضافه کردن</button>
+            </form>
+          </div>
+        </div>
+      </div> <!-- end col -->
+    </div> <!-- end row -->
+
+  </div><!-- container fluid -->
+
+</div> <!-- Page content Wrapper -->
